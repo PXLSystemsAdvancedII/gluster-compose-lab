@@ -54,6 +54,26 @@ GlusterFS is a scalable network filesystem. It combines storage servers accessed
                  Port 8080
 ```
 
+**glusterfs1 (172.20.0.101):**
+  - Primary storage node
+  - Initiates peer relationships
+  - First brick for replicated volume
+
+**glusterfs2 (172.20.0.102):**
+  - Secondary storage node
+  - Second brick for replica 2 volume
+  - Peer of glusterfs1
+
+**glusters3 (172.20.0.103):**
+  - Optional S3 gateway
+  - Volume mount point for alternate access
+  - Exposes port 8080 for S3 protocol
+
+**Network:**
+  - Custom bridge: `172.20.0.0/16`
+  - All containers interconnected
+  - Port 8080 mapped to host
+
 ## Lab Exercise 1: Cluster Setup
 
 ### Step 1: Understand the Docker Compose Configuration
